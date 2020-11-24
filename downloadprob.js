@@ -94,7 +94,12 @@ app.post('/', (req, res) =>{
         fs.writeFileSync(`./${num}/main.cpp`, T); 
         fs.writeFileSync(`./${num}/${k}.in`, input); 
         fs.writeFileSync(`./${num}/${k}.out`, output); 
-        
+       console.log(`Already made problem ${num}!`); 
+        console.log('Samples downloaded!'); 
+
+        console.log(`Problem ${data.name} Finished!`); 
+
+        console.log('\n'); 
     }
 
 
