@@ -14,6 +14,7 @@ fs.mkdirSync(`${userInput}`);
 
 let T = fs.readFileSync('template.cpp', 'utf-8'); 
 let Z = fs.readFileSync('Makefile', 'utf-8'); 
+let Q = fs.readFileSync('genTemp.cpp', 'utf-8'); 
 let data; 
 let starts = false; 
 app.post('/', (req, res) =>{
@@ -95,6 +96,7 @@ app.post('/', (req, res) =>{
         fs.writeFileSync(`${userInput}/${num}/main.cpp`, T); 
         fs.writeFileSync(`${userInput}/${num}/${k}.in`, input); 
         fs.writeFileSync(`${userInput}/${num}/${k}.out`, output); 
+        fs.writeFileSync(`${userInput}/${num}/gen.cpp`, Q); 
        console.log(`Already made problem ${num}!`); 
         console.log('Samples downloaded!'); 
 
