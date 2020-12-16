@@ -14,10 +14,13 @@ using namespace std;
 
  int main(){
 
+     
      int testCases = 0; 
 
      for(int i = 0; i<testCases; i++){
-         
-     }
+		  			
+     } 
+
+
 
  }

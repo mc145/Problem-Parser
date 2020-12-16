@@ -3,6 +3,10 @@ using namespace std;
 typedef long long ll; 
 typedef long double ld; 
 
+void solve(){
+	
+}
+
 
 int main(){
 
@@ -12,15 +16,15 @@ cin.tie(NULL);
 // ofstream cout("Filename.out"); 
 char nl = '\n'; 
 char bl = ' ';
-
 int t; 
 cin >> t; 
 
 for(int case_num = 1; case_num <= t; case_num++){
 
-
-    // cout << "Case #" << case_num << ": "; 
+	solve(); 	
+	 // cout << "Case #" << case_num << ": "; 
 }
 
+return 0; 
 }
 

@@ -9,9 +9,9 @@ app.use(bodyParser.json());
 app.use(cors()); 
 
 const PORT = 10043; 
+let userInput = process.argv[2]; 
 
 let T = fs.readFileSync('template.cpp', 'utf-8'); 
-let Z = fs.readFileSync('Makefile', 'utf-8'); 
 let Q = fs.readFileSync('genTemp.cpp', 'utf-8'); 
 let data; 
 let starts = false; 
@@ -20,7 +20,7 @@ app.post('/', (req, res) =>{
     starts = true; 
     let num = data.name[0] + data.name[1];      
     //console.log(num);
-    fs.mkdirSync(`${num}`); 
+    fs.mkdirSync(`${userInput}/${num}`); 
     all_tests = JSON.stringify(data.tests);  
  //console.log(all_tests); 
     
@@ -90,11 +90,10 @@ app.post('/', (req, res) =>{
         }
     }
     //console.log(output);
-        fs.writeFileSync(`${num}/Makefile`, Z); 
-        fs.writeFileSync(`${num}/main.cpp`, T); 
-        fs.writeFileSync(`${num}/${k}.in`, input); 
-        fs.writeFileSync(`${num}/${k}.out`, output); 
-        fs.writeFileSync(`${num}/gen.cpp`, Q); 
+        fs.writeFileSync(`${userInput}/${num}/main.cpp`, T); 
+        fs.writeFileSync(`${userInput}/${num}/${k}.in`, input); 
+        fs.writeFileSync(`${userInput}/${num}/${k}.out`, output); 
+        fs.writeFileSync(`${userInput}/${num}/gen.cpp`, Q); 
        console.log(`Already made problem ${num}!`); 
         console.log('Samples downloaded!'); 
 
