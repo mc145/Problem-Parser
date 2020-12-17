@@ -6,13 +6,13 @@ green=`tput setaf 2`
 
 current_testcase=0
 
-test_file="${current_testcase}.in"
+test_file="$1${current_testcase}.in"
 #.outss .outs 
 while [ -f ${test_file} ]
 do
-    ./$1 < "${current_testcase}.in" > "${current_testcase}.outs" 
+    ./$1 < "$1${current_testcase}.in" > "${current_testcase}.outs" 
     cat "${current_testcase}.outs" | tr -d '\n'> "fixed${current_testcase}.outs" 
-    cat "${current_testcase}.out" | tr -d " "> "${current_testcase}.outss" 
+    cat "$1${current_testcase}.out" | tr -d " "> "${current_testcase}.outss" 
 
     cat "fixed${current_testcase}.outs" | tr -d " "> "${current_testcase}.outs" 
 
@@ -25,5 +25,5 @@ do
         cat "${current_testcase}.outs"  
     fi
     current_testcase=$((current_testcase+1))
-    test_file="${current_testcase}.in"
+    test_file="$1${current_testcase}.in"
 done
