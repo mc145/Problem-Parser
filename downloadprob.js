@@ -11,10 +11,8 @@ app.use(cors());
 const PORT = 10043; 
 let userInput = process.argv[2]; 
 
-
-let D = fs.readFileSync('/home/mc145/Programming/Problem-Parser/dbg_run', 'utf-8'); 
-let Q = fs.readFileSync('/home/mc145/Programming/Problem-Parser/run_samples', 'utf-8'); 
 let T = fs.readFileSync('/home/mc145/Programming/Problem-Parser/template.cpp', 'utf-8'); 
+let Q = fs.readFileSync('/home/mc145/Programming/Problem-Parser/genTemp.cpp', 'utf-8'); 
 let data; 
 let starts = false; 
 app.post('/', (req, res) =>{
@@ -25,6 +23,7 @@ app.post('/', (req, res) =>{
     if(num.substring(num.length, num.length) == ' ' || num.substring(num.length, num.length == '.')){
         num = num.substring(0, num.length - 1); 
     }
+    fs.mkdirSync(`/home/mc145/Programming/${userInput}/${num}`); 
     all_tests = JSON.stringify(data.tests);  
  //console.log(all_tests); 
 
@@ -93,11 +92,10 @@ app.post('/', (req, res) =>{
         }
     }
     //console.log(output);
-        fs.writeFileSync(`/home/mc145/Programming/${userInput}/${num}.cpp`, T); 
-        fs.writeFileSync(`/home/mc145/Programming/${userInput}/${num}${k}.in`, input); 
-        fs.writeFileSync(`/home/mc145/Programming/${userInput}/${num}${k}.out`, output); 
-        fs.writeFileSync(`/home/mc145/Programming/${userInput}/dbg_run`, D); 
-        fs.writeFileSync(`/home/mc145/Programming/${userInput}/run_samples`, Q); 
+        fs.writeFileSync(`/home/mc145/Programming/${userInput}/${num}/main.cpp`, T); 
+        fs.writeFileSync(`/home/mc145/Programming/${userInput}/${num}/${k}.in`, input); 
+        fs.writeFileSync(`/home/mc145/Programming/${userInput}/${num}/${k}.out`, output); 
+        fs.writeFileSync(`/home/mc145/Programming/${userInput}/${num}/gen.cpp`, Q); 
        console.log(`Already made problem ${num}!`); 
         console.log('Samples downloaded!'); 
 
@@ -105,6 +103,7 @@ app.post('/', (req, res) =>{
 
         console.log('\n'); 
     }
+
 
    // __________________________________________________________________________
     
