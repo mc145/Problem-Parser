@@ -11,8 +11,7 @@ app.use(cors());
 const PORT = 10043; 
 let userInput = process.argv[2]; 
 
-let T = fs.readFileSync('/home/mc145/Programming/Problem-Parser/template.cpp', 'utf-8'); 
-let Q = fs.readFileSync('/home/mc145/Programming/Problem-Parser/genTemp.cpp', 'utf-8'); 
+let T = fs.readFileSync('/home/mc145/Programming/Problem-Parser/template.cpp', 'utf-8'); let Q = fs.readFileSync('/home/mc145/Programming/Problem-Parser/genTemp.cpp', 'utf-8'); 
 let data; 
 let starts = false; 
 app.post('/', (req, res) =>{
@@ -20,9 +19,7 @@ app.post('/', (req, res) =>{
     starts = true; 
     let num = data.name[0] + data.name[1];      
     //console.log(num);
-    if(num.substring(num.length, num.length) == ' ' || num.substring(num.length, num.length == '.')){
-        num = num.substring(0, num.length - 1); 
-    }
+   
     fs.mkdirSync(`/home/mc145/Programming/${userInput}/${num}`); 
     all_tests = JSON.stringify(data.tests);  
  //console.log(all_tests); 
